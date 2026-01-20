@@ -1,36 +1,54 @@
-# Red Wine Quality Prediction 🍷📈
+# Red Wine Quality Prediction 🍷
 
-## 📌 Overview
-This project explores the relationship between the chemical properties of red wine—specifically alcohol content—and its quality rating. Using the **Red Wine Quality** dataset, the goal is to build a linear regression model that predicts a wine's quality score, focusing on wines that are rated above "Table Wine" standards (quality > 4).
+## Overview
+This project analyzes the "Red Wine Quality" dataset to determine if physicochemical properties (such as alcohol level, acidity, and pH) can effectively predict the quality of wine. The notebook explores data correlations, visualizes trends, and implements machine learning models to classify and predict wine quality scores.
 
-## 🚀 Key Steps & Methodology
-1. **Data Loading & Inspection:**
-   - Loaded the dataset and examined its structure using `describe()` and `info()`.
-   - Checked for missing data to ensure data integrity.
-2. **Exploratory Data Analysis (EDA):**
-   - Analyzed correlations between different features.
-   - Visualized the relationship between `alcohol` and `quality` using scatter plots.
-3. **Data Filtering:**
-   - Filtered out lower-quality wines (`quality <= 4`) to focus the model on higher-grade wines where quality variance is more significant for selling purposes.
-4. **Modeling:**
-   - **Simple Linear Regression:** Built a model using `alcohol` as the primary predictor.
-   - **Multiple Linear Regression:** Expanded the model to include all available chemical features (e.g., acidity, sugar, chlorides) for a more robust prediction.
-5. **Prediction:**
-   - Created an interactive script to predict wine quality based on a user-inputted alcohol level while keeping other chemical properties at their average values.
+## 📊 Dataset
+The dataset contains various physicochemical tests for red variants of the Portuguese "Vinho Verde" wine.
+* **Input variables:** fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol.
+* **Target variable:** quality (score between 0 and 10).
 
-## 📊 Results
-- The initial analysis showed a correlation between alcohol content and quality.
-- Filtering the dataset to exclude low-quality wines refined the correlation analysis.
-- The final model allows for predicting the quality score of a wine given specific chemical inputs.
+## 🚀 Key Features & Methodology
+
+### 1. Exploratory Data Analysis (EDA)
+* **Data Inspection:** Reviewing dataset structure, checking for missing values, and statistical summary.
+* **Correlation Analysis:** Generating correlation matrices to identify relationships between variables (e.g., *Alcohol* vs. *Quality*).
+* **Visualization:** Scatter plots to visualize the spread of quality scores against alcohol content.
+
+### 2. Data Preprocessing
+* **Filtering:** Focused analysis on wines with a quality rating greater than 4 (excluding table wines).
+* **Splitting:** Division of data into training (80%) and testing (20%) sets.
+
+### 3. Machine Learning Models
+* **Linear Regression:**
+    * **Focus:** Investigated the specific relationship between **Alcohol level** and **Quality**.
+    * **Result:** The model showed a weak direct linear relationship, suggesting alcohol content alone is not a definitive predictor of quality.
+* **Decision Tree Classifier:**
+    * **Focus:** Utilized **all 11 physicochemical features** to predict quality.
+    * **Result:** Achieved significantly higher accuracy on the training set compared to the linear model, capturing non-linear relationships between the features.
+
+### 4. Prediction Interface
+* Includes an interactive section allowing users to input a specific **Alcohol level**.
+* The model predicts the wine quality by combining the user input with average values for the other physicochemical characteristics.
 
 ## 🛠️ Technologies Used
-- **Python**
-- **Pandas** (Data Manipulation)
-- **Matplotlib** (Data Visualization)
-- **Scikit-Learn** (Machine Learning: `LinearRegression`, `train_test_split`)
+* **Python 3**
+* **Pandas** (Data Manipulation)
+* **NumPy** (Numerical Operations)
+* **Matplotlib** (Data Visualization)
+* **Scikit-Learn** (Machine Learning Models)
+
+## 📉 Results Summary
+The analysis highlights that while alcohol content has some correlation with quality, it is not the sole driver. A Decision Tree model incorporating all chemical properties yields better predictive power than a simple Linear Regression based on alcohol alone.
 
 ## 💻 How to Run
-1. Open the notebook in a Jupyter environment or Google Colab.
-2. Ensure the red wine dataset is available in the expected path (or update the load path).
-3. Run the cells sequentially to process the data, train the model, and see the predictions.
-4. (Optional) Use the interactive cell at the end to input an alcohol level and get a predicted quality score.
+1.  Clone the repository.
+2.  Ensure the `winequality-red.csv` dataset is available.
+3.  Install dependencies:
+    ```bash
+    pip install pandas numpy matplotlib scikit-learn
+    ```
+4.  Run the Jupyter Notebook:
+    ```bash
+    jupyter notebook 20251106_Exercise_2_Redwine.ipynb
+    ```
